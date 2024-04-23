@@ -1,7 +1,6 @@
 import { updateUser } from "../../../lib/actions";
 import { fetchUser } from "../../../lib/data";
 import styles from "../../../ui/dashbord/users/singleUser/singleUser.module.css";
-// import styles from "@/app/ui/dashbord/users/singleUser/singleUser.module.css";
 import Image from "next/image";
 
 const SingleUserPage = async ({ params }) => {
