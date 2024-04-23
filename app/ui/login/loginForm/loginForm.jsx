@@ -25,14 +25,6 @@ const LoginForm = () => {
   
   return (
      <form action = {handleSubmit(handleLogin)} className={styles.form}
-     //<form action={formAction} className={styles.form}//for useFormState
-    //ref={formRef}
-    //  <form ref={formRef} className={styles.form}//2
-    //    action={async formData => {await authenticate(null, formData);//2
-    //      //const  error = await authenticate(null, formData);//3
-    //       if(error){setError(error)}
-    //      formRef.current?.reset()
-    //     }}
     >
       <h1 >Login</h1>
       <input type="text" placeholder="username" name="username"
