@@ -1,7 +1,7 @@
 "use client"
-//recharts@9.2.0
+
 import styles from './chart.module.css'
-//import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 
 const data = [
   {
