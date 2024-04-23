@@ -1,4 +1,3 @@
-//import { Interface } from "readline";
 import { Product, User } from "./models";
 import { connectToDB } from "./utils";
 import { userType } from "../types";
