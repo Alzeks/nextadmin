@@ -7,34 +7,16 @@ import bcrypt from "bcrypt";
 import { userType, UserT } from "./types";
 
 import { JWT } from "next-auth/jwt"
-//import { Session } from "next-auth/jw"
-
-declare module "next-auth/jwt" {
-  /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
-  interface JWT {
-    image?: string; username?: string
-    //user:{image?: string; username?: string}
-  }
-}
-
-declare module "next-auth" {
-  /*** Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context*/
-  interface Session {
-    user: {
-      name?: string, email?: string, username?: string, image: string
-    } //& DefaultSession["user"]
-  }
-}
 
 const login = async (credentials: { username: string, password: string }) => {
   try {
     connectToDB();
     const user = await User.findOne({ username: credentials.username });
-    //For bcrypt----------------------------------
+    //For bcrypt hashing------------------------------------------------------------------
     //if (!user || !user.isAdmin) throw new Error("Wrong credentials!");
     // const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
     //if (!isPasswordCorrect) throw new Error("Wrong credentials!");
-    //--------------------------------------------
+    //------------------------------------------------------------------------------------
     return user
   } catch (err) {
     throw new Error("Failed to login!");
@@ -68,10 +50,8 @@ export const { signIn, signOut, auth, handlers: { GET, POST } } =
       },
       async session({ session, token }) {
         if (token) {
-          //session.user = { name: token.name, email: 'op' };
           //@ts-ignore
           session.user = { username: token.username, image: token.image, email: token.email }
-          //return { ...session, user:{image: token.image,username: token.username} }
         }
         return session;
       },
